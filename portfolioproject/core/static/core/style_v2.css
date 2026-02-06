@@ -1,0 +1,282 @@
+/* ===============================
+   🌌 GLOBAL RESET & VARIABLES
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #020617;
+    --bg-card: #050a1a;
+
+    --neon-pink: #ff2bdc;
+    --neon-blue: #00f6ff;
+    --neon-purple: #8b5cf6;
+    --neon-green: #39ff14;
+
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(0,246,255,0.15), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(255,43,220,0.15), transparent 45%),
+        var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* ===============================
+   🧭 NAVBAR
+================================ */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0,246,255,0.3);
+    box-shadow: 0 0 25px rgba(0,246,255,0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo a {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: var(--neon-pink);
+    text-decoration: none;
+    text-shadow: 0 0 12px var(--neon-pink);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue),
+                inset 0 0 15px rgba(0,246,255,0.3);
+}
+
+/* ===============================
+   🌟 MAIN CONTENT
+================================ */
+main {
+    padding: 80px 60px;
+}
+
+/* ===============================
+   🚀 HERO SECTION
+================================ */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+}
+
+.hero-text {
+    max-width: 850px;
+    padding: 70px;
+    border-radius: 35px;
+    background: rgba(5, 10, 26, 0.85);
+    border: 1px solid rgba(139,92,246,0.4);
+    box-shadow:
+        0 0 30px rgba(139,92,246,0.3),
+        0 0 80px rgba(0,246,255,0.15);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.6rem;
+    font-weight: 900;
+    background: linear-gradient(
+        90deg,
+        var(--neon-pink),
+        var(--neon-purple),
+        var(--neon-blue)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 25px rgba(255,43,220,0.35);
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+/* ===============================
+   🔘 BUTTONS (NEON)
+================================ */
+.hero-buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background: transparent;
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.btn.primary:hover {
+    background: var(--neon-pink);
+    color: #020617;
+    box-shadow: 0 0 30px var(--neon-pink);
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.btn.secondary:hover {
+    background: var(--neon-blue);
+    color: #020617;
+    box-shadow: 0 0 30px var(--neon-blue);
+}
+
+/* ===============================
+   🦄 FOOTER
+================================ */
+.footer {
+    margin-top: 80px;
+    padding: 25px;
+    text-align: center;
+    background: #020617;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255,43,220,0.3);
+}
+
+/* ===============================
+   📱 RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 25px;
+    }
+
+    main {
+        padding: 50px 25px;
+    }
+
+    .hero-text {
+        padding: 45px 25px;
+    }
+
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
+/* ===============================
+   ✉️ CONTACT SECTION
+================================ */
+.contact-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.contact-card {
+    max-width: 500px;
+    width: 100%;
+    padding: 50px;
+    background: rgba(5, 10, 26, 0.9);
+    border-radius: 30px;
+    border: 1px solid rgba(0,246,255,0.3);
+    box-shadow:
+        0 0 40px rgba(0,246,255,0.2),
+        0 0 80px rgba(255,43,220,0.15);
+    text-align: center;
+}
+
+.contact-card h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(
+        90deg,
+        var(--neon-pink),
+        var(--neon-purple),
+        var(--neon-blue)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* FORM */
+.contact-card input,
+.contact-card textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: #020617;
+    border: 1px solid rgba(139,92,246,0.4);
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+    color: #64748b;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0,246,255,0.4);
+}
