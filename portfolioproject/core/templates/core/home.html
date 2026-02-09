@@ -1,7 +1,15 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block content %}
 <section class="hero">
+
+    <!-- 🔥 LEFT: NEON PHOTO -->
+    <div class="hero-image">
+        <img src="{% static 'core/cv.jpg' %}" alt="Parth Tripathi">
+    </div>
+
+    <!-- ✨ RIGHT: TEXT CONTENT -->
     <div class="hero-text">
         <h1>
             Hi, I’m <span>Parth Tripathi</span> 👋
@@ -19,5 +27,6 @@
             <a href="/contact/" class="btn secondary">Contact Me</a>
         </div>
     </div>
+
 </section>
 {% endblock %}

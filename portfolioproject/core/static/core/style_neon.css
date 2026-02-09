@@ -90,9 +90,12 @@ main {
     min-height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 100px 20px;
+    justify-content: space-between;   /* 🔥 key change */
+    gap: 80px;
+    padding: 100px 80px;
+    flex-wrap: wrap;
 }
+
 
 .hero-text {
     max-width: 850px;
@@ -279,4 +282,41 @@ main {
     outline: none;
     border-color: var(--neon-blue);
     box-shadow: 0 0 15px rgba(0,246,255,0.4);
+}
+
+.hero-image {
+    position: relative;
+    z-index: 2;   /* 🔥 brings image forward */
+}
+
+.hero-image img {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--neon-blue);
+    position: relative;
+    z-index: 3;
+
+    box-shadow:
+        0 0 15px var(--neon-blue),
+        0 0 40px rgba(0, 246, 255, 0.8),
+        0 0 80px rgba(255, 43, 220, 0.5);
+}
+
+/* Glow ring */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    inset: -25px;
+    border-radius: 50%;
+    background: linear-gradient(
+        45deg,
+        var(--neon-blue),
+        var(--neon-pink),
+        var(--neon-purple)
+    );
+    filter: blur(35px);
+    opacity: 0.9;
+    z-index: 1;   /* 🔥 stays BEHIND image */
 }
