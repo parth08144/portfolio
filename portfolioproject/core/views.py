@@ -17,20 +17,37 @@ def projects_view(request):
 
 
 
+# def contact_view(request):
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         email = request.POST.get("email")
+#         message = request.POST.get("message")
+
+#         Contact.objects.create(
+#             name=name,
+#             email=email,
+#             message=message
+#         )
+
+#         return redirect("contact")
+
+#     return render(request, "core/contact.html")
 def contact_view(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         message = request.POST.get("message")
 
-        Contact.objects.create(
-            name=name,
-            email=email,
-            message=message
-        )
+        if name and email and message:
+            Contact.objects.create(
+                name=name,
+                email=email,
+                message=message
+            )
 
         return redirect("contact")
 
     return render(request, "core/contact.html")
+
 
 

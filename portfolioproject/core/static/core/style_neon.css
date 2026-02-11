@@ -1,6 +1,4 @@
-/* ===============================
-   🌌 GLOBAL RESET & VARIABLES
-================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -30,9 +28,7 @@ body {
     min-height: 100vh;
 }
 
-/* ===============================
-   🧭 NAVBAR
-================================ */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -76,16 +72,12 @@ body {
                 inset 0 0 15px rgba(0,246,255,0.3);
 }
 
-/* ===============================
-   🌟 MAIN CONTENT
-================================ */
+
 main {
     padding: 80px 60px;
 }
 
-/* ===============================
-   🚀 HERO SECTION
-================================ */
+
 .hero {
     min-height: 80vh;
     display: flex;
@@ -137,9 +129,7 @@ main {
     line-height: 1.7;
 }
 
-/* ===============================
-   🔘 BUTTONS (NEON)
-================================ */
+
 .hero-buttons {
     display: flex;
     gap: 25px;
@@ -181,9 +171,7 @@ main {
     box-shadow: 0 0 30px var(--neon-blue);
 }
 
-/* ===============================
-   🦄 FOOTER
-================================ */
+
 .footer {
     margin-top: 80px;
     padding: 25px;
@@ -193,9 +181,7 @@ main {
     border-top: 1px solid rgba(255,43,220,0.3);
 }
 
-/* ===============================
-   📱 RESPONSIVE
-================================ */
+
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 25px;
@@ -217,9 +203,7 @@ main {
         flex-direction: column;
     }
 }
-/* ===============================
-   ✉️ CONTACT SECTION
-================================ */
+
 .contact-section {
     min-height: 80vh;
     display: flex;
@@ -259,7 +243,7 @@ main {
     margin-bottom: 30px;
 }
 
-/* FORM */
+
 .contact-card input,
 .contact-card textarea {
     width: 100%;
@@ -286,7 +270,7 @@ main {
 
 .hero-image {
     position: relative;
-    z-index: 2;   /* 🔥 brings image forward */
+    z-index: 2;  
 }
 
 .hero-image img {
@@ -304,7 +288,7 @@ main {
         0 0 80px rgba(255, 43, 220, 0.5);
 }
 
-/* Glow ring */
+
 .hero-image::before {
     content: "";
     position: absolute;
@@ -318,5 +302,5 @@ main {
     );
     filter: blur(35px);
     opacity: 0.9;
-    z-index: 1;   /* 🔥 stays BEHIND image */
+    z-index: 1;   
 }
