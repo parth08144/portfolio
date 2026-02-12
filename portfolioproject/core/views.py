@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
+from .models import Project
 
 from .models import Contact
 
@@ -10,7 +11,7 @@ def home_view(request):
 def about_view(request):
     return render(request, "core/about.html")
 
-def projects_view(request):
+# def projects_view(request):
     return render(request, "core/project.html")
 
 # def contact_view(request):
@@ -83,6 +84,12 @@ def contact_view(request):
         return redirect("contact")
 
     return render(request, "core/contact.html")
+
+
+def projects_view(request):
+    projects = Project.objects.all()
+    return render(request, "core/project.html", {"projects": projects})
+
 
 
 

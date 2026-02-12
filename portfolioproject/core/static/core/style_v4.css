@@ -74,7 +74,7 @@ body {
 
 
 main {
-    padding: 80px 60px;
+    padding: 80px 20px;
 }
 
 
@@ -304,3 +304,79 @@ main {
     opacity: 0.9;
     z-index: 1;   
 }
+
+/* ===============================
+   🚀 FINAL PROJECT SECTION
+================================ */
+
+.projects-section {
+    padding: 120px 20px;
+    text-align: center;
+}
+
+/* Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 60px;
+    max-width: 1000px;
+    margin: 60px auto 0 auto;
+}
+
+/* Card */
+.project-card {
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(5, 10, 26, 0.9);
+    border: 1px solid rgba(0,246,255,0.3);
+    box-shadow: 0 0 25px rgba(255,43,220,0.15);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 35px rgba(0,246,255,0.25);
+}
+
+.project-card h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* Button Styling (Fixed Properly) */
+.projects-section .btn {
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    display: inline-block;
+    max-width: 220px;
+}
+
+.project-links {
+    display: flex;
+    justify-content: center;
+}
+
+
+.project-image {
+    width: 100%;
+    height: 180px;              
+    object-fit: cover;          
+    object-position: center;    
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,246,255,0.3);
+    box-shadow: 0 0 15px rgba(0,246,255,0.2);
+    transition: 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
