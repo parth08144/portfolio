@@ -32,6 +32,13 @@ def about_view(request):
 # ----------------------------
 # Contact View
 # ----------------------------
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Contact
+
+
 def contact_view(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -39,8 +46,16 @@ def contact_view(request):
         phone = request.POST.get("phone")
         message = request.POST.get("message")
 
-        if name and email and message:
-            # Save to database
+        # 🔍 Debug (optional – remove later)
+        print("Received:", name, email, phone, message)
+
+        # ✅ Validation
+        if not name or not email or not message:
+            messages.error(request, "Please fill all required fields.")
+            return redirect("contact")
+
+        try:
+            # ✅ Save to database FIRST
             Contact.objects.create(
                 name=name,
                 email=email,
@@ -48,7 +63,7 @@ def contact_view(request):
                 message=message
             )
 
-            # Email to you (admin)
+            # ✅ Email to Admin
             send_mail(
                 subject=f"New Contact Form Submission from {name}",
                 message=f"""
@@ -61,9 +76,10 @@ Message:
                 """,
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[settings.EMAIL_HOST_USER],
+                fail_silently=True,  # 🔥 Prevent email error breaking DB save
             )
 
-            # Auto reply to user
+            # ✅ Auto reply
             send_mail(
                 subject="Thank You for Contacting Me 🚀",
                 message=f"""
@@ -77,9 +93,14 @@ Parth Tripathi
                 """,
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[email],
+                fail_silently=True,
             )
 
             messages.success(request, "Message sent successfully!")
+
+        except Exception as e:
+            print("ERROR:", e)
+            messages.error(request, "Something went wrong. Please try again.")
 
         return redirect("contact")
 
