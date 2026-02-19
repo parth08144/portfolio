@@ -1,5 +1,50 @@
 {% extends "core/base.html" %}
-
+{% load static %}
 {% block content %}
-<h1>About Page</h1>
+
+
+<section class="about-section">
+
+    <div class="about-card">
+
+        <h1>About Me 👨‍💻</h1>
+
+        <p>
+            Hi, I'm <strong>Parth Tripathi</strong>, a passionate Full-Stack Developer
+            specializing in Django and modern web technologies.
+            I love building scalable, clean, and impactful applications.
+            Also having a strong interest in Data Analysis, Artificial Intelligence, Machine Learning, and Deep Learning.
+        </p>
+
+        <h2>🚀 What I Do</h2>
+        <p>
+            I develop web applications using HTML, CSS, Django, PostgreSQL.
+            I also work on data-driven projects involving analysis,
+            visualization, and business insights.
+        </p>
+
+        <h2>🛠 Tech Stack</h2>
+        <ul class="skills-list">
+            <li>Python</li>
+            <li>Django</li>
+            <li>PostgreSQL</li>
+            <li>HTML / CSS / JavaScript</li>
+            <li>Data Analysis</li>
+        </ul>
+
+        <h2>🎯 My Goal</h2>
+        <p>
+            My goal is to become a high-level software engineer
+            building intelligent systems and impactful tech products.
+        </p>
+
+        <div class="about-buttons">
+            <a href="/projects/" class="btn primary">View My Projects</a>
+            <a href="/contact/" class="btn secondary">Contact Me</a>
+        </div>
+
+    </div>
+
+</section>
+
 {% endblock %}
