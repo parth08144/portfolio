@@ -447,3 +447,63 @@ main {
     flex-wrap: wrap;       
 }
 
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--neon-blue);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ===============================
+   ADD PROJECT FORM STYLING
+================================ */
+
+.contact-card form {
+    margin-top: 30px;
+}
+
+/* Input + Textarea */
+.form-input {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: #020617;
+    border: 1px solid rgba(0,246,255,0.4);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder color */
+.form-input::placeholder {
+    color: #64748b;
+}
+
+/* Focus effect */
+.form-input:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0,246,255,0.6);
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--neon-pink);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Textarea specific */
+textarea.form-input {
+    min-height: 140px;
+    resize: vertical;
+}

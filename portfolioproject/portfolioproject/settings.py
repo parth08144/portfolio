@@ -135,3 +135,5 @@ EMAIL_HOST_USER = 'parth123sa@gmail.com'
 EMAIL_HOST_PASSWORD = 'togegijrgtpxajaz'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+LOGIN_REDIRECT_URL = "projects"
+LOGOUT_REDIRECT_URL = "home"
