@@ -11,16 +11,12 @@ from .models import Project, Contact
 from .forms import ProjectForm
 
 
-# ----------------------------
-# Helper: Only Admin Access
-# ----------------------------
+
 def is_admin(user):
     return user.is_superuser
 
 
-# ----------------------------
-# Home & About
-# ----------------------------
+
 def home_view(request):
     return render(request, "core/home.html")
 
@@ -29,9 +25,7 @@ def about_view(request):
     return render(request, "core/about.html")
 
 
-# ----------------------------
-# Contact View
-# ----------------------------
+
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
@@ -46,16 +40,16 @@ def contact_view(request):
         phone = request.POST.get("phone")
         message = request.POST.get("message")
 
-        # 🔍 Debug (optional – remove later)
+        
         print("Received:", name, email, phone, message)
 
-        # ✅ Validation
+        
         if not name or not email or not message:
             messages.error(request, "Please fill all required fields.")
             return redirect("contact")
 
         try:
-            # ✅ Save to database FIRST
+            
             Contact.objects.create(
                 name=name,
                 email=email,
@@ -63,7 +57,7 @@ def contact_view(request):
                 message=message
             )
 
-            # ✅ Email to Admin
+            
             send_mail(
                 subject=f"New Contact Form Submission from {name}",
                 message=f"""
@@ -76,10 +70,10 @@ Message:
                 """,
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[settings.EMAIL_HOST_USER],
-                fail_silently=True,  # 🔥 Prevent email error breaking DB save
+                fail_silently=True,  
             )
 
-            # ✅ Auto reply
+            
             send_mail(
                 subject="Thank You for Contacting Me 🚀",
                 message=f"""
@@ -107,17 +101,13 @@ Parth Tripathi
     return render(request, "core/contact.html")
 
 
-# ----------------------------
-# Projects Display
-# ----------------------------
+
 def projects_view(request):
     projects = Project.objects.all().order_by("-created_at")
     return render(request, "core/project.html", {"projects": projects})
 
 
-# ----------------------------
-# Signup (Optional - if needed)
-# ----------------------------
+
 def signup_view(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -131,9 +121,7 @@ def signup_view(request):
     return render(request, "core/signup.html", {"form": form})
 
 
-# ----------------------------
-# Login / Logout
-# ----------------------------
+
 class CustomLoginView(LoginView):
     template_name = "core/login.html"
 
@@ -142,9 +130,7 @@ class CustomLogoutView(LogoutView):
     next_page = "/"
 
 
-# ----------------------------
-# Add Project (ADMIN ONLY)
-# ----------------------------
+
 @user_passes_test(is_admin)
 def add_project(request):
     if request.method == "POST":
@@ -159,9 +145,7 @@ def add_project(request):
     return render(request, "core/add_project.html", {"form": form})
 
 
-# ----------------------------
-# Delete Project (ADMIN ONLY)
-# ----------------------------
+
 @user_passes_test(is_admin)
 def delete_project(request, pk):
     project = get_object_or_404(Project, id=pk)
@@ -176,9 +160,9 @@ def add_project(request):
     if request.method == "POST":
         form = ProjectForm(request.POST)
         if form.is_valid():
-            project = form.save(commit=False)   # 🚨 DON'T SAVE YET
-            project.user = request.user         # ✅ Assign logged-in user
-            project.save()                      # ✅ Now save
+            project = form.save(commit=False)   
+            project.user = request.user         
+            project.save()                      
             return redirect("projects")
     else:
         form = ProjectForm()
