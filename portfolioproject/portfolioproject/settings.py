@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qq4ysn#7-d(09zn*#ydj^s-j0y9v%bax1robeef&q8i4+l!q@l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -138,5 +138,6 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 LOGIN_REDIRECT_URL = "projects"
 LOGOUT_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = '/signup/'
 
 ALLOWED_HOSTS = ["*", ".onrender.com"]

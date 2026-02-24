@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Not Found</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 100px;
+            margin: 0;
+            color: #38bdf8;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #cbd5e1;
+        }
+
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>404</h1>
+    <p>Oops! The page you're looking for doesn’t exist.</p>
+    <a href="{% url 'home' %}">Go Back Home</a>
+</div>
+
+</body>
+</html>

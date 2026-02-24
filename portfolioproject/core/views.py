@@ -168,3 +168,8 @@ def add_project(request):
         form = ProjectForm()
 
     return render(request, "core/add_project.html", {"form": form})
+
+
+
+def custom_404(request, exception):
+    return render(request, '404error.html', status=404)
