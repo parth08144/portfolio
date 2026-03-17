@@ -538,3 +538,45 @@ textarea.form-input {
     opacity: 1;
     transform: rotate(90deg) scale(1.1);
 }
+
+.highlight {
+    background: linear-gradient(120deg, #ffeaa7, #fab1a0);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px #ffeaa7; }
+    to { box-shadow: 0 0 15px #fab1a0; }
+}
+
+
+/* CV Button */
+.cv-nav-btn {
+    background: linear-gradient(45deg, #6c5ce7, #00cec9);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white !important;
+    transition: 0.3s ease;
+}
+
+.cv-nav-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Logout button fix (clean look) */
+.logout-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+}

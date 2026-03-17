@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Parth Tripathi | Portfolio</title>
 
-    <link rel="stylesheet" href="{% static 'core/style_v2.css' %}">
+    <link rel="stylesheet" href="{% static 'core/style_v3.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -21,6 +21,13 @@
             <li><a href="{% url 'projects' %}">Projects</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
 
+            <!-- ✅ Download CV Button -->
+            <li>
+                <a href="{% static 'core/CV_PARTH.pdf' %}" download class="cv-nav-btn">
+                    ⬇ Download CV
+                </a>
+            </li>
+
             {% if user.is_authenticated %}
                 {% if user.is_superuser %}
                     <li><a href="{% url 'add_project' %}">Add Project</a></li>
@@ -29,7 +36,7 @@
                 <li>
                     <form action="{% url 'logout' %}" method="POST" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" style="background:none;border:none;color:white;cursor:pointer;font:inherit;">
+                        <button type="submit" class="logout-btn">
                             Logout
                         </button>
                     </form>
@@ -43,9 +50,8 @@
         {% endblock %}
     </main>
 
-    
     {% if not user.is_authenticated %}
-    <a href="{% url 'login' %}" class="floating-gear">⚙</a>
+        <a href="{% url 'login' %}" class="floating-gear">⚙</a>
     {% endif %}
 
     <script src="{% static 'core/js/main.js' %}"></script>
