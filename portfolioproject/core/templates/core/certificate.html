@@ -1,0 +1,49 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="projects-section">
+    <h1 class="section-title">My Certifications 🎓</h1>
+
+    <div class="projects-grid">
+       
+
+        <!-- Certificate 1 -->
+        <div class="project-card">
+
+            <img src="{% static 'core/ai_preview.jpg' %}" class="project-image">
+
+            <h2>AI/ML Certification</h2>
+            <p>CSE Pathshala</p>
+
+            <div class="project-links">
+                <a href="{% static 'core/AI.pdf' %}" target="_blank" class="btn primary">
+                    View Certificate
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Certificate 2 -->
+        <div class="project-card">
+
+            <img src="{% static 'core/preview_sn.jpg' %}" class="project-image">
+
+            <h2>Social Networking Certification</h2>
+            <p>NPTEL</p>
+
+            <div class="project-links">
+                <a href="{% static 'core/Social_Networks.pdf' %}" target="_blank" class="btn primary">
+                    View Certificate
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+

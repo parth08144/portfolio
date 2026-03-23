@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
 
-from .models import Project, Contact
+from .models import Certificate, Project, Contact
 from .forms import ProjectForm
 
 
@@ -173,3 +173,68 @@ def add_project(request):
 
 def custom_404(request, exception):
     return render(request, '404error.html', status=404)
+
+def certifications(request):
+    return render(request, 'core/certificate.html')
+
+
+
+
+@login_required
+def add_certificate(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        issuer = request.POST.get('issuer')
+        image = request.FILES.get('image')
+        file = request.FILES.get('file')
+
+        print(title, issuer, image, file)  # 🔥 debug
+
+        Certificate.objects.create(
+            title=title,
+            issuer=issuer,
+            image=image,
+            file=file
+        )
+
+        return redirect('certifications')
+
+    return render(request, 'core/add_certificate.html')
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def delete_certificate(request, pk):
+    cert = Certificate.objects.get(id=pk)
+    cert.delete()
+    return redirect('certifications')
+
+@login_required
+def add_certificate(request):
+    if request.method == "POST":
+        print("POST DATA:", request.POST)
+        print("FILES:", request.FILES)
+
+        title = request.POST.get('title')
+        issuer = request.POST.get('issuer')
+        image = request.FILES.get('image')
+        file = request.FILES.get('file')
+
+        print("VALUES:", title, issuer, image, file)
+
+        if not title or not issuer or not image or not file:
+            print("❌ Missing data")
+            return redirect('add_certificate')
+
+        Certificate.objects.create(
+            title=title,
+            issuer=issuer,
+            image=image,
+            file=file
+        )
+
+        print("✅ SAVED SUCCESSFULLY")
+
+        return redirect('certifications')
+
+    return render(request, 'core/add_certificate.html')

@@ -19,9 +19,10 @@
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'projects' %}">Projects</a></li>
+            <li><a href="{% url 'certifications' %}">Certifications</a></li>
             <li><a href="{% url 'contact' %}">Contact</a></li>
 
-            <!-- ✅ Download CV Button -->
+            
             <li>
                 <a href="{% static 'core/CV_PARTH.pdf' %}" download class="cv-nav-btn">
                     ⬇ Download CV
@@ -31,6 +32,7 @@
             {% if user.is_authenticated %}
                 {% if user.is_superuser %}
                     <li><a href="{% url 'add_project' %}">Add Project</a></li>
+                    <li><a href="{% url 'add_certificate' %}">Add Certificate</a></li>
                 {% endif %}
 
                 <li>

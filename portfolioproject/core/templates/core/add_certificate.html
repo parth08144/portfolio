@@ -1,0 +1,77 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<div class="contact-section">
+    <div class="contact-card">
+
+        <h1>Add Certificate 🎓</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input type="text" name="title" placeholder="Certificate Title" required>
+            <input type="text" name="issuer" placeholder="Issuer" required>
+
+            <input type="file" name="image" required>
+            <input type="file" name="file" required>
+
+            <button type="submit" class="btn primary">Add Certificate</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+{% for cert in certs %}
+
+<div class="project-card">
+
+    <img src="{{ cert.image.url }}" class="project-image">
+
+    <h2>{{ cert.title }}</h2>
+    <p>{{ cert.issuer }}</p>
+
+    <div class="project-links">
+        <a href="{{ cert.file.url }}" target="_blank" class="btn primary">
+            View Certificate
+        </a>
+
+        <!-- Delete Button -->
+        <a href="{% url 'delete_certificate' cert.id %}" class="btn secondary">
+            Delete
+        </a>
+    </div>
+
+</div>
+
+{% endfor %}
+@login_required
+def add_certificate(request):
+    if request.method == "POST":
+        print("POST DATA:", request.POST)
+        print("FILES:", request.FILES)
+
+        title = request.POST.get('title')
+        issuer = request.POST.get('issuer')
+        image = request.FILES.get('image')
+        file = request.FILES.get('file')
+
+        print("VALUES:", title, issuer, image, file)
+
+        if not title or not issuer or not image or not file:
+            print("❌ Missing data")
+            return redirect('add_certificate')
+
+        Certificate.objects.create(
+            title=title,
+            issuer=issuer,
+            image=image,
+            file=file
+        )
+
+        print("✅ SAVED SUCCESSFULLY")
+
+        return redirect('certifications')
+
+    return render(request, 'core/add_certificate.html')
